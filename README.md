@@ -2,7 +2,7 @@
 /* Display the records where the employee has resigned */
   SELECT emp_id, CONCAT(fname,' ',lname) AS name, date_of_resign
   FROM hospital_analysis.employee
-  WHERE NULL IF(date_of_resign,' ') IS NOT NULL;
+  WHERE NULLIF(date_of_resign,' ') IS NOT NULL;
   
 /* Find the number of males and females in each employee type category */
    SELECT emp_type, sex, count(emp_id)
@@ -18,7 +18,7 @@
 /* List the dept_name and the fees spent in that dept */
    SELECT d.dept_name, t.fees
    FROM hospital_analysis.department AS d
-   JOIN hospital_analysis.treaments AS t
+   INNER JOIN hospital_analysis.treaments AS t
    ON d.dep_id = t.dep_no
    GROUP BY dept_id ASC;
    
